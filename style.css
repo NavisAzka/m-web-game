@@ -1,0 +1,70 @@
+body {
+  background-color: rgb(54, 54, 54);
+  margin: 0;
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 14%;
+  max-width: 900px;
+}
+
+.top div {
+  display: inline-block;
+}
+
+.setting {
+  float: right;
+}
+
+.info {
+  padding: 0px 24px;
+  margin: 0px;
+  color: rgb(172, 172, 172);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.mid,
+.bottom {
+  text-align: center;
+}
+
+h1,
+input {
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 32px;
+  color: white;
+}
+
+#inputJawaban {
+  margin: 20px 30px 40px;
+}
+
+.btn {
+  width: 90px;
+  height: 40px;
+  border-radius: 40px;
+  border-color: transparent;
+  color: rgb(235, 235, 235);
+  background-color: rgb(43, 43, 43);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn h2 {
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  color: white;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+input {
+  width: 140px;
+  text-align: center;
+  background-color: transparent;
+}
