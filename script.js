@@ -5,11 +5,24 @@ const b = document.getElementById("x2");
 const buttonNext = document.querySelector(".btn");
 const inputUser = document.querySelector("#answer");
 const ansInfo = document.querySelector("#crt-ans");
+const timeInfo = document.querySelector("#avg-time");
 
 let correctAnswer = 0;
 let answer;
 
+let timer = 0;
+let avgTime = 0;
+
+setInterval(() => {
+  timer++;
+  console.log(timer);
+}, 1000);
+
 ActionNext();
+
+function CalculateAvgTime() {
+  avgTime = Math.round(timer / correctAnswer);
+}
 
 function MakeQuestion() {
   let x = Math.round(Math.random() * 10);
@@ -26,9 +39,10 @@ function ActionNext() {
     correctAnswer++;
   }
 
-  ansInfo.innerHTML = correctAnswer;
+  CalculateAvgTime();
 
-  inputUser.value = "";
+  ansInfo.innerHTML = correctAnswer;
+  timeInfo.innerHTML = avgTime;
 
   MakeQuestion();
 }
