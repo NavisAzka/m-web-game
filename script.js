@@ -3,7 +3,7 @@ const a = document.getElementById("x1");
 const operator = document.getElementById("operator");
 const b = document.getElementById("x2");
 const buttonNext = document.querySelector(".btn");
-const inputUser = document.querySelector("#answer");
+const inputUser = document.getElementById("answer");
 const ansInfo = document.querySelector("#crt-ans");
 const timeInfo = document.querySelector("#avg-time");
 
@@ -15,18 +15,21 @@ let avgTime = 0;
 
 setInterval(() => {
   timer++;
-  console.log(timer);
 }, 1000);
 
 ActionNext();
 
 function CalculateAvgTime() {
   avgTime = Math.round(timer / correctAnswer);
+
+  if (correctAnswer <= 0) {
+    avgTime = 0;
+  }
 }
 
 function MakeQuestion() {
-  let x = Math.round(Math.random() * 10);
-  let y = Math.round(Math.random() * 10);
+  let x = Math.round(Math.random() * 20);
+  let y = Math.round(Math.random() * 20);
 
   a.innerHTML = x;
   b.innerHTML = y;
@@ -35,6 +38,8 @@ function MakeQuestion() {
 }
 
 function ActionNext() {
+  inputUser.autofocus = true;
+
   if (inputUser.value == answer) {
     correctAnswer++;
   }
@@ -44,12 +49,20 @@ function ActionNext() {
   ansInfo.innerHTML = correctAnswer;
   timeInfo.innerHTML = avgTime;
 
+  inputUser.value = null;
+
   MakeQuestion();
 }
 
 //#region Eventlistener
 document.body.addEventListener("click", function (event) {
   callAction(event, ActionNext);
+});
+
+document.body.addEventListener("keyup", (e) => {
+  if (e.key == "Enter") {
+    ActionNext();
+  }
 });
 
 document.body.addEventListener("mouseover", function (event) {
