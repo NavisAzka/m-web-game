@@ -5,9 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <title>m-game</title>
   </head>
+
   <body>
+    <div class="topnav" id="myTopnav">
+      <a class="type">Type</a>
+      <a class="operation">Operation</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
     <div class="container">
       <div class="top">
         <!-- <h3 class="info">time = <span id="time">0</span>s</h3> -->
@@ -16,21 +25,39 @@
           <h3 class="info">t = <span id="avg-time">0</span></h3>
         </div>
         <div class="setting">
-          <h3 class="info"></span></h3>
+          <!-- <h3 class="info">Option</span></h3> -->
+        </div>
+        <div class="panel">
+          <!-- <h3 class="answerMethod">multiple choice</h3> -->
         </div>
       </div>
       <div class="mid">
+        <h1 id="check">Correct!</h1>
         <h1 id="soal">
           <span id="x1">A</span>
           <span id="operator">+</span>
           <span id="x2">B</span> =
         </h1>
       </div>
+
+      <!-- Bagian Jawaban -->
       <div class="bottom">
-        <div id="inputJawaban">
-          <input type="number" name="answer" id="answer" />
+        <div id="jawaban">
+          <div class="pilgan aktif">
+            <div id="inputJawaban">
+              <input type="number" name="answer" id="answer" />
+            </div>
+            <div class="btn next">
+              <h2 class="next">NEXT</h2>
+            </div>
+          </div>
+          <div class="essay">
+            <div class="opt A">43</div>
+            <div class="opt B">51</div>
+            <div class="opt C">13</div>
+            <div class="opt D">97</div>
+          </div>
         </div>
-        <div class="btn next"><h2 class="next">NEXT</h2></div>
       </div>
     </div>
 
