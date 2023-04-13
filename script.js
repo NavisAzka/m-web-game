@@ -9,6 +9,8 @@ const timeInfo = document.querySelector("#avg-time");
 
 const operation = document.querySelector(".operation");
 const type = document.querySelector(".type");
+const digit1 = document.querySelector(".digit1");
+const digit2 = document.querySelector(".digit2");
 const bottomPart = document.getElementById("jawaban");
 const pilGan = bottomPart.children[0];
 const essay = bottomPart.children[1];
@@ -17,6 +19,9 @@ const opt = document.getElementsByClassName("opt");
 const check = document.getElementById("check");
 
 let essayTog = true;
+
+let digit1int = 10;
+let digit2int = 10;
 
 let correctAnswer = 0;
 let answer = 0;
@@ -41,8 +46,11 @@ function CalculateAvgTime() {
 }
 
 function MakeQuestion() {
-  let x = Math.round(Math.random() * 20);
-  let y = Math.round(Math.random() * 20);
+  let x = Math.round(Math.random() * digit1int);
+  let y = Math.round(Math.random() * digit2int);
+
+  digit2.innerHTML = "x < " + digit2int;
+  digit1.innerHTML = "x < " + digit1int;
 
   if (i == 0) {
     answer = x + y;
@@ -65,12 +73,18 @@ function MakeQuestion() {
 }
 
 function MakeMultipleChoice() {
-  let choices = [0, 2, 3, 1];
+  let choices = [5, 14, 10, 3, 12, 8, 33, 21, 20, -4, -10, -2, -15];
+
+  let right = Math.floor(Math.random() * 4);
 
   for (let index = 0; index < 4; index++) {
-    let p = choices[Math.floor(Math.random() * choices.length)];
-    opt[index].innerHTML = answer + p;
-    choices.splice(choices.indexOf(p), 1);
+    if (right == index) {
+      opt[index].innerHTML = answer;
+    } else {
+      let p = choices[Math.floor(Math.random() * choices.length)];
+      opt[index].innerHTML = answer + p;
+      choices.splice(choices.indexOf(p), 1);
+    }
   }
 }
 
@@ -179,6 +193,32 @@ type.addEventListener("click", () => {
   pilGan.classList.toggle("aktif");
   essay.classList.toggle("aktif");
   essayTog = !essayTog;
+
+  MakeQuestion();
+
+  if (!essayTog) {
+    MakeMultipleChoice();
+  }
+});
+
+digit1.addEventListener("click", () => {
+  digit1int += 10;
+  if (digit1int > 31) {
+    digit1int = 10;
+  }
+
+  MakeQuestion();
+
+  if (!essayTog) {
+    MakeMultipleChoice();
+  }
+});
+
+digit2.addEventListener("click", () => {
+  digit2int += 10;
+  if (digit2int > 31) {
+    digit2int = 10;
+  }
 
   MakeQuestion();
 
